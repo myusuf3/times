@@ -20,7 +20,7 @@ func Now() Times {
 }
 
 // This will localixe
-func (t Times) Localize(timezone string) (Times, error) {
+func (t Times) Normalize(timezone string) (Times, error) {
 	location, err := time.LoadLocation(timezone)
 
 	if err != nil {
