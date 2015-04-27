@@ -21,3 +21,27 @@ func TestNowFunc(t *testing.T) {
 		t.Fatalf("Expected the location to be %s but got %s instead", location, timesNow.Location)
 	}
 }
+
+func TestNormalizeFunc(t *testing.T) {
+	timeUTC := Now()
+	timeEST, _ := timeUTC.Normalize("EST")
+
+	if !timeUTC.Equal(timeEST) {
+		t.Fatalf("Excepted times to be Equal but we got %s and %s", timeUTC, timeEST)
+	}
+
+	if timeEST.Timezone != "EST" {
+		t.Fatalf("Expected the timezone to be EST but got %s instead", timeEST.Timezone)
+	}
+	location, _ := time.LoadLocation("EST")
+	if timeEST.Location.String() != location.String() {
+		t.Fatalf("Expected the location to be %s but got %s instead", location, timeEST.Location)
+	}
+
+	epochTimeUTC := timeUTC.Epoch()
+	epochTimeEST := timeEST.Epoch()
+
+	if epochTimeEST != epochTimeUTC {
+		t.Fatalf("Expected epochs to match we we got %d, and %d", epochTimeUTC, epochTimeEST)
+	}
+}
