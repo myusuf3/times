@@ -27,11 +27,9 @@ a `Time` instance but still, you had all the colors of the wind.
 
 # func (Time) Unix
 
-> func (t Time) Unix() int64
 > Unix returns t as a Unix time, the number of seconds elapsed since January 1, 1970 UTC.
 
 
 #func Unix
 
-> func Unix(sec int64, nsec int64) Time
 > Unix returns the local Time corresponding to the given Unix time, sec seconds and nsec nanoseconds since January 1, 1970 UTC. It is valid to pass nsec outside the range [0, 999999999].
