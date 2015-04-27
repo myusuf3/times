@@ -3,8 +3,6 @@ package times
 import (
 	"testing"
 	"time"
-
-	"github.com/myusuf3/times"
 )
 
 func TestNowFunc(t *testing.T) {
