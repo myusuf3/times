@@ -45,3 +45,13 @@ func TestNormalizeFunc(t *testing.T) {
 		t.Fatalf("Expected epochs to match we we got %d, and %d", epochTimeUTC, epochTimeEST)
 	}
 }
+
+func TestEpochFunc(t *testing.T) {
+	timeEpochNow := time.Now().Unix()
+	timesEpochNow := Now().Epoch()
+
+	if timeEpochNow != timesEpochNow {
+		t.Fatalf("Excepted epochs to match but got %d and %d", timeEpochNow, timeEpochNow)
+	}
+
+}
