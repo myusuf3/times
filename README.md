@@ -19,18 +19,19 @@ For example the Parse function in the `time` package is full of caveats
 which can be less than convient trying to remember in the heat of the moment!
 
 >In the absence of a time zone indicator, Parse returns a time in UTC.
+
 >When parsing a time with a zone offset like -0700, if the offset corresponds to a time zone used by the current location (Local), then Parse uses that location and zone in the returned time. Otherwise it records the time as being in a fabricated location with time fixed at the given zone offset.
 
 Check out the double name reuse of Unix in the package as well. Granted one operates on
 a `Time` instance but still, you had all the colors of the wind.
 
-> func (Time) Unix
+# func (Time) Unix
 
->func (t Time) Unix() int64
->Unix returns t as a Unix time, the number of seconds elapsed since January 1, 1970 UTC.
+> func (t Time) Unix() int64
+> Unix returns t as a Unix time, the number of seconds elapsed since January 1, 1970 UTC.
 
 
->func Unix
+#func Unix
 
->func Unix(sec int64, nsec int64) Time
->Unix returns the local Time corresponding to the given Unix time, sec seconds and nsec nanoseconds since January 1, 1970 UTC. It is valid to pass nsec outside the range [0, 999999999].
+> func Unix(sec int64, nsec int64) Time
+> Unix returns the local Time corresponding to the given Unix time, sec seconds and nsec nanoseconds since January 1, 1970 UTC. It is valid to pass nsec outside the range [0, 999999999].
