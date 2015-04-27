@@ -23,6 +23,10 @@ func Now() *Times {
 	return &Times{time, timezone, location}
 }
 
+func EpochNow() int64 {
+	return Now().Epoch()
+}
+
 // This will localixe
 func (t *Times) Normalize(timezone string) (*Times, error) {
 	location, err := time.LoadLocation(timezone)
