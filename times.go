@@ -1,6 +1,9 @@
 package times
 
-import "time"
+import (
+	"errors"
+	"time"
+)
 
 type Times struct {
 	time.Time
@@ -12,11 +15,18 @@ type Times struct {
 func Now() Times {
 	timezone := "UTC"
 	location, _ := time.LoadLocation(timezone)
-	now := time.Now().UTC()
-	return Times{now, timezone, location}
+	time := time.Now().UTC()
+	return Times{time, timezone, location}
 }
 
 // This will localixe
-func (t Times) Localize() {
+func (t Times) Localize(timezone string) (Times, error) {
+	location, err := time.LoadLocation(timezone)
+
+	if err != nil {
+		return nil, errors.New("The provided timezone isn't a valid time.Location", timezone)
+	}
+	time := t.In(location)
+	return Times(time, timezone, location), err
 
 }
