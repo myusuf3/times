@@ -7,7 +7,7 @@ import (
 
 func TestNowFunc(t *testing.T) {
 	timeNow := time.Now().UTC().Truncate(time.Millisecond)
-	timesNow := times.Now()
+	timesNow := Now()
 	timesNowTime := timesNow.Time.Truncate(time.Millisecond)
 	if timeNow != timesNowTime {
 		t.Fatalf("Excepted %s and %s to be equal", timesNowTime, timeNow)
