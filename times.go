@@ -11,6 +11,10 @@ type Times struct {
 	location *time.Location
 }
 
+func (t *Times) String() string {
+	return t.time.String()
+}
+
 // This will return an instance of Times the current time localized to UTC
 func Now() *Times {
 	timezone := "UTC"
