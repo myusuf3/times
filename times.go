@@ -12,7 +12,7 @@ type Times struct {
 }
 
 // This will return an instance of Times the current time localized to UTC
-func Now() Times {
+func Now() *Times {
 	timezone := "UTC"
 	location, _ := time.LoadLocation(timezone)
 	time := time.Now().UTC()
