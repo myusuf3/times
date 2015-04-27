@@ -6,13 +6,13 @@ import (
 )
 
 type Times struct {
-	time     time.Time
-	timezone string
-	location *time.Location
+	Time     time.Time
+	Timezone string
+	Location *time.Location
 }
 
 func (t *Times) String() string {
-	return t.time.String()
+	return t.Time.String()
 }
 
 // This will return an instance of Times the current time localized to UTC
@@ -30,10 +30,14 @@ func (t *Times) Normalize(timezone string) (*Times, error) {
 	if err != nil {
 		return nil, errors.New("The provided timezone isn't a valid time.Location " + timezone)
 	}
-	time := t.time.In(location)
+	time := t.Time.In(location)
 	return &Times{time, timezone, location}, nil
 }
 
 func (t *Times) Equal(u *Times) bool {
-	return t.time.Equal(u.time)
+	return t.Time.Equal(u.Time)
+}
+
+func (t *Times) Epoch() int64 {
+	return t.Time.Unix()
 }
