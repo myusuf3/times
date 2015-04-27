@@ -3,15 +3,17 @@ package times
 import "time"
 
 type Times struct {
-	time     time.Time
+	time.Time
 	timezone string
 	location time.Location
 }
 
 // This will return an instance of Times the current time localized to UTC
 func Now() Times {
-
-	return Times{}
+	timezone = "UTC"
+	location, err := LoadLocation(timezone)
+	now := time.Now().UTC()
+	return Times{now, timezone, location}
 }
 
 // This will localixe
