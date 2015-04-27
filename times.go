@@ -2,7 +2,7 @@ package times
 
 import "time"
 
-struct Times {
+type Times struct {
     time time.Time
     timezone string
     location Location
